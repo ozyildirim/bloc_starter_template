@@ -3,7 +3,7 @@ part of 'theme_cubit.dart';
 class ThemeState extends Equatable {
   ThemeState({this.isDarkModeActive = false});
 
-  bool? isDarkModeActive;
+  final bool isDarkModeActive;
 
   ThemeState copyWith({
     ThemeData? lightThemeData,

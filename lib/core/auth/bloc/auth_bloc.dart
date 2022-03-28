@@ -13,7 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   late StreamSubscription streamSubscription;
   AuthBloc({required this.authRepository}) : super(Initializing()) {
-    monitorInternetStatus();
+    // monitorInternetStatus();
     // When User Presses the SignIn Button, we will send the SignInRequested Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
     on<SignInRequested>((event, emit) async {
       emit(Loading());

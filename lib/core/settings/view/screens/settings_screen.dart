@@ -67,7 +67,7 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
-                    value: state.isDarkModeActive!,
+                    value: state.isDarkModeActive,
                     title: Text(
                       "Dark Mode",
                       style: Theme.of(context).textTheme.titleMedium,

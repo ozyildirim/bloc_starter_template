@@ -1,13 +1,16 @@
 import 'package:authentication_repository/authentication_repository.dart';
-import 'package:bloc_starter_template/core/auth/view/screens/sign_in_screen.dart';
-import 'core/auth/bloc/auth_bloc.dart';
-import 'core/auth/view/screens/splash_screen.dart';
-import 'core/dashboard/view/screens/dashboard_screen.dart';
+import 'package:bloc_starter_template/config/themes/dark_theme.dart';
+import 'package:bloc_starter_template/config/themes/light_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'config/routers/app_router.dart';
+import 'core/auth/bloc/auth_bloc.dart';
+import 'core/auth/view/screens/sign_in_screen.dart';
+import 'core/auth/view/screens/splash_screen.dart';
+import 'core/dashboard/view/screens/dashboard_screen.dart';
 import 'core/settings/cubit/settings_cubit.dart';
 import 'core/theme/cubit/theme_cubit.dart';
 import 'utils/app_bloc_observer.dart';
@@ -29,7 +32,7 @@ Future<void> main() async {
 
 class MyApp extends StatefulWidget {
   final AppRouter router;
-  MyApp({Key? key, required this.router}) : super(key: key);
+  const MyApp({Key? key, required this.router}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -64,6 +67,9 @@ class _MyAppState extends State<MyApp> {
           return ScreenUtilInit(
             designSize: const Size(392, 737),
             builder: () => MaterialApp(
+              theme: context.watch<ThemeCubit>().state.isDarkModeActive
+                  ? darkTheme
+                  : lightTheme,
               onGenerateRoute: AppRouter.onGenerateRoute,
               debugShowCheckedModeBanner: false,
               home: BlocBuilder(
